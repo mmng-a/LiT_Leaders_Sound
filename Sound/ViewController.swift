@@ -8,62 +8,42 @@
 import AVFoundation
 import UIKit
 
-struct Instrument: Equatable, Hashable {
-  let name: String
-  let player: AVAudioPlayer
-  var imageName: String { "\(name)Image.png" }
-  var playingImageName: String { "\(name)PlayingImage.png" }
-  
-  init?(name: String) {
-    self.name = name
-    guard let sound = NSDataAsset(name: "\(name)Sound"),
-          let player = try? AVAudioPlayer(data: sound.data) else {
-      return nil
-    }
-    self.player = player
-  }
-}
-
-extension Instrument {
-  func play() {
-    player.currentTime = 0
-    player.play()
-  }
-  
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(name.hashValue)
-  }
-}
-
-
 class ViewController: UIViewController {
   
   @IBOutlet var drumButton: UIButton!
   @IBOutlet var pianoButton: UIButton!
   @IBOutlet var guitarButton: UIButton!
   
-  let drum = Instrument(name: "drum")!
-  let piano = Instrument(name: "piano")!
-  let guitar = Instrument(name: "guitar")!
-
+  let drumPlayer = try! AVAudioPlayer(data: NSDataAsset(name: "drumSound")!.data)
+  let pianoPlayer = try! AVAudioPlayer(data: NSDataAsset(name: "pianoSound")!.data)
+  let guitarPlayer = try! AVAudioPlayer(data: NSDataAsset(name: "guitarSound")!.data)
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
-    drumButton.setImage(UIImage(named: drum.imageName), for: .normal)
-    drumButton.setImage(UIImage(named: drum.playingImageName), for: .highlighted)
-    pianoButton.setImage(UIImage(named: piano.imageName), for: .normal)
-    pianoButton.setImage(UIImage(named: piano.playingImageName), for: .highlighted)
-    guitarButton.setImage(UIImage(named: guitar.imageName), for: .normal)
-    guitarButton.setImage(UIImage(named: guitar.playingImageName), for: .highlighted)
+    // 通常時同様、押下時のイメージもUIImage.setImage(,for:)にて設定できる
+    // 教科書にはIBActionに種類があることを伝えたい意図があると考えたが、
+    // 筋が非常に悪いため、こちらにした。
+    drumButton.setImage(UIImage(named: "drumImage.png"), for: .normal)
+    drumButton.setImage(UIImage(named: "drumPlayingImage.png"), for: .highlighted)
+    pianoButton.setImage(UIImage(named: "pianoImage.png"), for: .normal)
+    pianoButton.setImage(UIImage(named: "pianoPlayingImage.png"), for: .highlighted)
+    guitarButton.setImage(UIImage(named: "guitarImage.png"), for: .normal)
+    guitarButton.setImage(UIImage(named: "guitarPlayingImage.png"), for: .highlighted)
   }
   
   @IBAction func tapDrumButton(sender: UIButton) {
-    switch sender {
-    case drumButton:   drum.play()
-    case pianoButton:  piano.play()
-    case guitarButton: guitar.play()
-    default:           fatalError()
-    }
+    drumPlayer.currentTime = 0
+    drumPlayer.play()
   }
-
+  
+  @IBAction func tapPianoButton(sender: UIButton) {
+    pianoPlayer.currentTime = 0
+    pianoPlayer.play()
+  }
+  
+  @IBAction func tapGuitarButton(sender: UIButton) {
+    guitarPlayer.currentTime = 0
+    guitarPlayer.play()
+  }
+  
 }

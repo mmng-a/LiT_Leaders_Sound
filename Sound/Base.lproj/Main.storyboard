@@ -23,7 +23,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="drumImage" title=""/>
                                         <connections>
-                                            <action selector="tapDrumButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ui3-nn-XXl"/>
+                                            <action selector="tapDrumButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mk5-cz-4tk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vm4-ab-bh9">
@@ -31,7 +31,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="pianoImage"/>
                                         <connections>
-                                            <action selector="tapDrumButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ULg-vY-TG6"/>
+                                            <action selector="tapPianoButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RrW-3q-ADT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXf-dN-lx7">
@@ -39,7 +39,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="guitarImage"/>
                                         <connections>
-                                            <action selector="tapDrumButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aSk-c8-Q2I"/>
+                                            <action selector="tapGuitarButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8d-ft-srW"/>
                                         </connections>
                                     </button>
                                 </subviews>
